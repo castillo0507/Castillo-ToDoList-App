@@ -1,0 +1,967 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', 'Google Sans', sans-serif;
+    background: #f1f3f4;
+    min-height: 100vh;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* ===== THEME STYLES ===== */
+
+/* Light Theme (Default) */
+.theme-light {
+    background: #f1f3f4;
+}
+
+.theme-light .header {
+    background: #fff;
+    border-bottom-color: #e0e0e0;
+}
+
+.theme-light .logo-text,
+.theme-light .note-title,
+.theme-light .task-text,
+.theme-light .edit-title-input {
+    color: #202124;
+}
+
+/* Dark Theme */
+.theme-dark {
+    background: #202124;
+}
+
+.theme-dark .header {
+    background: #292a2d;
+    border-bottom-color: #3c4043;
+}
+
+.theme-dark .search-bar {
+    background: #3c4043;
+}
+
+.theme-dark .search-input,
+.theme-dark .logo-text {
+    color: #e8eaed;
+}
+
+.theme-dark .search-input::placeholder {
+    color: #9aa0a6;
+}
+
+.theme-dark .icon-btn,
+.theme-dark .search-icon {
+    color: #9aa0a6;
+}
+
+.theme-dark .icon-btn:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.theme-dark .note-input,
+.theme-dark .note-card.color-white {
+    background: #292a2d;
+    border-color: #3c4043;
+}
+
+.theme-dark .note-input input,
+.theme-dark #noteTitleInput,
+.theme-dark .task-input-row input {
+    color: #e8eaed;
+}
+
+.theme-dark .note-input input::placeholder,
+.theme-dark #noteTitleInput::placeholder,
+.theme-dark .task-input-row input::placeholder {
+    color: #9aa0a6;
+}
+
+.theme-dark .note-title {
+    color: #e8eaed;
+}
+
+.theme-dark .note-card.color-white .task-text {
+    color: #e8eaed;
+}
+
+.theme-dark .note-card.color-white .note-task-item.completed .task-text {
+    color: #9aa0a6;
+}
+
+.theme-dark .card-label {
+    background: rgba(255,255,255,0.1);
+    color: #9aa0a6;
+}
+
+.theme-dark .card-actions .icon-btn {
+    color: #9aa0a6;
+}
+
+.theme-dark .modal-content {
+    background: #292a2d;
+}
+
+.theme-dark .modal-content.color-white {
+    background: #292a2d;
+}
+
+.theme-dark .edit-title-input,
+.theme-dark .edit-task-item input[type="text"],
+.theme-dark .add-task-row input {
+    color: #e8eaed;
+}
+
+.theme-dark .edit-title-input::placeholder,
+.theme-dark .add-task-row input::placeholder {
+    color: #9aa0a6;
+}
+
+.theme-dark .edit-task-item {
+    border-bottom-color: #3c4043;
+}
+
+.theme-dark .edit-title-input {
+    border-bottom-color: #3c4043;
+}
+
+.theme-dark .select-all-btn {
+    background: #3c4043;
+    border-color: #5f6368;
+    color: #9aa0a6;
+}
+
+.theme-dark .select-all-btn:hover {
+    background: #4285f4;
+    color: #fff;
+}
+
+.theme-dark .color-dot.color-white {
+    background: #525355;
+    border-color: #5f6368;
+}
+
+.theme-dark .pending-task {
+    color: #e8eaed;
+}
+
+.theme-dark .stats {
+    color: #9aa0a6;
+}
+
+.theme-dark .empty-message {
+    color: #9aa0a6;
+}
+
+.theme-dark .empty-message .material-icons {
+    color: #5f6368;
+}
+
+.theme-dark .note-select-checkbox .material-icons {
+    color: #9aa0a6;
+}
+
+/* Cream Theme */
+.theme-cream {
+    background: #f5f0e6;
+}
+
+.theme-cream .header {
+    background: #fffdf7;
+    border-bottom-color: #e6dfd1;
+}
+
+.theme-cream .search-bar {
+    background: #f0ebe0;
+}
+
+.theme-cream .note-input,
+.theme-cream .note-card.color-white {
+    background: #fffdf7;
+    border-color: #e6dfd1;
+}
+
+.theme-cream .modal-content {
+    background: #fffdf7;
+}
+
+.theme-cream .modal-content.color-white {
+    background: #fffdf7;
+}
+
+.theme-cream .color-dot.color-white {
+    background: #fffdf7;
+    border-color: #e6dfd1;
+}
+
+.theme-cream .select-all-btn {
+    background: #f0ebe0;
+    border-color: #e6dfd1;
+}
+
+/* ===== END THEME STYLES ===== */
+
+/* Header */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 64px;
+    background: #fff;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    margin-left: 4px;
+}
+
+.logo-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-icon svg {
+    filter: drop-shadow(0 2px 4px rgba(66, 133, 244, 0.3));
+}
+
+.logo-text {
+    font-size: 20px;
+    color: #202124;
+    margin-left: 8px;
+    font-family: 'Google Sans', sans-serif;
+    font-weight: 500;
+}
+
+/* Search Bar */
+.search-bar {
+    flex: 1;
+    max-width: 720px;
+    height: 46px;
+    background: #f1f3f4;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    margin: 0 20px;
+}
+
+.search-icon {
+    color: #5f6368;
+    margin-right: 12px;
+}
+
+.search-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    outline: none;
+    color: #202124;
+}
+
+.search-input::placeholder {
+    color: #5f6368;
+}
+
+/* Header Right */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Selection Controls */
+.selection-controls {
+    display: none;
+    align-items: center;
+    gap: 12px;
+    padding: 6px 12px;
+    background: #e8f0fe;
+    border-radius: 24px;
+    margin-right: 8px;
+}
+
+.selection-controls.visible {
+    display: flex;
+}
+
+#selectedCount {
+    font-size: 14px;
+    font-weight: 500;
+    color: #1967d2;
+}
+
+.delete-selected-btn {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 16px;
+    background: #d93025;
+    color: white;
+    border: none;
+    border-radius: 18px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.delete-selected-btn:hover {
+    background: #c5221f;
+}
+
+.delete-selected-btn .material-icons {
+    font-size: 18px;
+}
+
+.icon-btn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: transparent;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #5f6368;
+    transition: background 0.2s;
+}
+
+.icon-btn:hover {
+    background: rgba(0,0,0,0.08);
+}
+
+/* Main Content */
+.main-content {
+    padding-top: 88px;
+    padding-bottom: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+/* Note Input Container */
+.note-input-container {
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.note-input {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.15);
+    padding: 16px 20px;
+    width: 100%;
+    max-width: 600px;
+    transition: box-shadow 0.3s;
+}
+
+.note-input:focus-within {
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+#noteTitleInput {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    font-weight: 500;
+    color: #202124;
+    background: transparent;
+    margin-bottom: 12px;
+}
+
+#noteTitleInput::placeholder {
+    color: #80868b;
+    font-weight: 400;
+}
+
+.task-input-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 0;
+    border-top: 1px solid #e0e0e0;
+}
+
+.task-input-row .material-icons {
+    color: #80868b;
+    font-size: 20px;
+}
+
+.task-input-row input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    color: #202124;
+    background: transparent;
+}
+
+.task-input-row input::placeholder {
+    color: #80868b;
+}
+
+/* Pending Tasks */
+.pending-tasks {
+    margin: 8px 0;
+}
+
+.pending-task {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 0;
+    font-size: 14px;
+    color: #202124;
+}
+
+.pending-task .material-icons {
+    font-size: 18px;
+    color: #80868b;
+    cursor: pointer;
+}
+
+.pending-task .material-icons:hover {
+    color: #d93025;
+}
+
+.note-input-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #e0e0e0;
+}
+
+/* Color Picker */
+.color-picker {
+    display: flex;
+    gap: 8px;
+}
+
+.color-dot {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.color-dot:hover {
+    transform: scale(1.15);
+}
+
+.color-dot.active {
+    border-color: #202124;
+}
+
+.color-dot.color-white { background: #fff; border-color: #e0e0e0; }
+.color-dot.color-white.active { border-color: #202124; }
+.color-dot.color-yellow { background: #fff475; }
+.color-dot.color-orange { background: #fbbc04; }
+.color-dot.color-teal { background: #a7ffeb; }
+.color-dot.color-pink { background: #fdcfe8; }
+
+/* Add Button */
+.add-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 20px;
+    background: #4285f4;
+    color: white;
+    border: none;
+    border-radius: 24px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s;
+}
+
+.add-btn:hover {
+    background: #3367d6;
+    box-shadow: 0 2px 8px rgba(66, 133, 244, 0.4);
+}
+
+.add-btn .material-icons {
+    font-size: 18px;
+}
+
+/* Notes Grid */
+.notes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    list-style: none;
+}
+
+.notes-grid.list-view {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Note Card */
+.note-card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    transition: box-shadow 0.2s, transform 0.2s;
+    animation: fadeIn 0.3s ease;
+    position: relative;
+    cursor: pointer;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.note-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.note-card.selected {
+    box-shadow: 0 0 0 2px #4285f4, 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Note Selection Checkbox */
+.note-select-checkbox {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s;
+    z-index: 10;
+}
+
+.note-card:hover .note-select-checkbox,
+.note-card.selected .note-select-checkbox {
+    opacity: 1;
+}
+
+.note-select-checkbox .material-icons {
+    font-size: 22px;
+    color: #5f6368;
+}
+
+.note-card.selected .note-select-checkbox .material-icons {
+    color: #4285f4;
+}
+
+/* Card Colors */
+.note-card.color-white { background: #fff; }
+.note-card.color-yellow { background: #fff475; }
+.note-card.color-orange { background: #fbbc04; }
+.note-card.color-teal { background: #a7ffeb; }
+.note-card.color-pink { background: #fdcfe8; }
+
+/* Note Title */
+.note-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #202124;
+    margin-bottom: 12px;
+    word-break: break-word;
+    padding-left: 28px;
+}
+
+/* Task List in Card */
+.note-tasks {
+    list-style: none;
+    margin-bottom: 12px;
+}
+
+.note-task-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 6px 0;
+    font-size: 14px;
+    color: #202124;
+    line-height: 1.4;
+}
+
+.note-task-item input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+    cursor: pointer;
+    accent-color: #4285f4;
+    flex-shrink: 0;
+}
+
+.note-task-item.completed .task-text {
+    text-decoration: line-through;
+    color: #80868b;
+}
+
+.note-task-item .task-text {
+    flex: 1;
+    word-break: break-word;
+}
+
+/* Card Footer */
+.card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px solid rgba(0,0,0,0.08);
+}
+
+.card-label {
+    font-size: 11px;
+    color: #5f6368;
+    background: rgba(0,0,0,0.06);
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-weight: 500;
+}
+
+/* Card Actions */
+.card-actions {
+    display: flex;
+    gap: 4px;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.note-card:hover .card-actions {
+    opacity: 1;
+}
+
+.card-actions .icon-btn {
+    width: 32px;
+    height: 32px;
+}
+
+.card-actions .icon-btn .material-icons {
+    font-size: 18px;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    width: 100%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+
+.edit-title-input {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    font-weight: 500;
+    color: #202124;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.edit-title-input::placeholder {
+    color: #80868b;
+}
+
+.edit-tasks-list {
+    margin-bottom: 16px;
+}
+
+.edit-task-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid #f1f3f4;
+}
+
+.edit-task-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: #4285f4;
+    flex-shrink: 0;
+}
+
+.edit-task-item input[type="text"] {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    color: #202124;
+    background: transparent;
+}
+
+.edit-task-item input[type="text"].completed {
+    text-decoration: line-through;
+    color: #80868b;
+}
+
+.edit-task-item .delete-task-btn {
+    width: 28px;
+    height: 28px;
+    border: none;
+    background: transparent;
+    border-radius: 50%;
+    cursor: pointer;
+    color: #80868b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.edit-task-item:hover .delete-task-btn {
+    opacity: 1;
+}
+
+.edit-task-item .delete-task-btn:hover {
+    background: #fee;
+    color: #d93025;
+}
+
+.edit-task-item .delete-task-btn .material-icons {
+    font-size: 18px;
+}
+
+.add-task-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    color: #80868b;
+}
+
+.add-task-row .material-icons {
+    font-size: 20px;
+}
+
+.add-task-row input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    color: #202124;
+    background: transparent;
+}
+
+.add-task-row input::placeholder {
+    color: #80868b;
+}
+
+.modal-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.save-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 24px;
+    background: #4285f4;
+    color: white;
+    border: none;
+    border-radius: 24px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.save-btn:hover {
+    background: #3367d6;
+}
+
+.save-btn .material-icons {
+    font-size: 18px;
+}
+
+/* Select All Button */
+.select-all-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 10px 16px;
+    margin-top: 12px;
+    background: #f1f3f4;
+    color: #5f6368;
+    border: 1px dashed #dadce0;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.select-all-btn:hover {
+    background: #e8f0fe;
+    color: #4285f4;
+    border-color: #4285f4;
+}
+
+.select-all-btn .material-icons {
+    font-size: 18px;
+}
+
+/* Stats */
+.stats {
+    text-align: center;
+    margin-top: 32px;
+    padding: 16px;
+    color: #80868b;
+    font-size: 13px;
+}
+
+/* Empty Message */
+.empty-message {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: #80868b;
+    padding: 80px 20px;
+    font-size: 16px;
+}
+
+.empty-message .material-icons {
+    font-size: 64px;
+    color: #dadce0;
+    display: block;
+    margin-bottom: 16px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #dadce0;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #bdc1c6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .logo-text {
+        display: none;
+    }
+    
+    .search-bar {
+        margin: 0 12px;
+    }
+    
+    .main-content {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+    
+    .notes-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .notes-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .color-picker {
+        gap: 6px;
+    }
+    
+    .color-dot {
+        width: 24px;
+        height: 24px;
+    }
+    
+    .note-input-actions {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .add-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
